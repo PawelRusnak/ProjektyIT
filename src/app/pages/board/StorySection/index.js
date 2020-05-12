@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { styled } from '@material-ui/core/styles';
 import TaskTile from './TaskTile';
@@ -12,11 +12,19 @@ const Section = styled('div')({
 })
 
 const StorySection = ({ task, sections, moveTask, openDialog }) => {
+  const [hidden, setHidden] = useState(false);
+
+  const handleArrowClick = (taskId) => {
+    setHidden(!hidden);
+  }
+
   return (
     <>
-      <Header task={task} />
-      <Section>
-        {sections.map(section =>
+      <Header task={task} hidden={hidden} handleArrowClick={handleArrowClick} />
+      <Section
+        style={hidden ? { minHeight: 0 } : {}}
+      >
+        {!hidden && sections.map(section =>
           <Column taskId={task.id} moveTask={moveTask} section={section}>
             {task.subtasks.map(subtask =>
               subtask.status === section && <TaskTile parentId={task.id} task={subtask} openDialog={openDialog} />

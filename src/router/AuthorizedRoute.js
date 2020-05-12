@@ -6,6 +6,8 @@ const AuthorizedRoute = ({ permission, permissions, ...props }) => {
   if (permission) {
   }
 
+ 
+
   return (
     <Route
       {...props}

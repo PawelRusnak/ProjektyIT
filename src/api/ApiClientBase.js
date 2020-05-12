@@ -1,29 +1,34 @@
 import * as Axios from 'axios';
 import * as MockAdapter from 'axios-mock-adapter';
-import Config from 'Config';
 
-const axiosInstance = Axios.default.create({
-  baseURL: Config.apiDefaultURL,
-  timeout: Config.apiTimeout
+const mock = new MockAdapter(Axios)
+
+mock.onGet("/tasks").reply(200, {
+  users: [{ id: 1, name: "John Smith" }],
+});
+mock.onGet("/projects").reply(200, {
+  projects: [{ name: "Project ALFA", url: "/project-alfa/", shortName: "PA" },
+  { name: "Project BETA", url: "/project-beta/", shortName: "PB" }],
 });
 
 class ApiClientBase {
-  get = (url, params) => axiosInstance.get(url, {
-    params
-  });
+  get = (url, params) => {
+    return Axios
+      .get(url, { params });
+  }
 
   post = (url, data) => {
-    return axiosInstance
+    return Axios
       .post(url, data);
   };
 
   put = (url, data) => {
-    return axiosInstance
+    return Axios
       .put(url, data);
   };
 
   delete = (url, data) => {
-    return axiosInstance
+    return Axios
       .delete(url, {
         data: data
       });

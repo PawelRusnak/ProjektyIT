@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import StorySection from './StorySection'
 import { styled } from '@material-ui/core/styles';
 import { DndProvider } from 'react-dnd';
 import dndBackend from 'react-dnd-html5-backend';
 import TaskDetailsDialog from '../../dialogs/TaskDetailsDialog';
+import TasksApiClient from '../../../api/TasksApiClient'
+import HeadLine from './HeadLine';
+
+const TasksApi = new TasksApiClient();
 
 const sections = ['todo', 'progress', 'testing', 'done'];
 let tasksMock = [{
@@ -75,31 +79,52 @@ let tasksMock = [{
       status: 'done',
     },
   ]
+},
+{
+  id: 'task-3',
+  name: 'test story n3  ',
+  status: 'done',
+  type: 'story',
+  subtasks: [
+    {
+      id: 'task-4234',
+      name: 'test123',
+      estimate: '5',
+      logged: '3',
+      osoba: 'paweł',
+      prio: '1',
+      status: 'done',
+    },
+    {
+      id: 'task-5234',
+      name: 'test123',
+      estimate: '5',
+      logged: '3',
+      osoba: 'paweł',
+      prio: '1',
+      status: 'done',
+    },
+    {
+      id: 'task-6234',
+      name: 'test123',
+      estimate: '5',
+      logged: '3',
+      osoba: 'paweł',
+      prio: '1',
+      status: 'done',
+    },
+  ]
 }]
-const Section = styled('div')({
-  display: 'flex',
-  alignItems: 'stretch',
-  position: 'sticky',
-  top: 64,
-  backgroundColor: '#ffffff',
-  marginTop: -24,
-  paddingTop: 24,
-})
-
-const Column = styled('div')({
-  display: 'flex',
-  alignItems: 'stretch',
-  width: '100%',
-  backgroundColor: '#f4f5f7',
-  margin: 5,
-  lineHeight: 3,
-  paddingLeft: 15,
-  borderRadius: '10px 10px 0 0',
-})
 
 const Board = () => {
   const [tasks, setTasks] = React.useState(tasksMock);
   const [taskId, setTaskId] = React.useState();
+
+  useEffect(() => {
+    TasksApi.getTasks().then(response => {
+      console.log(response);
+    })
+  }, [])
 
   const moveTask = (parentId, taskId, newStatus) => {
     let taskParent = tasks.filter(task => task.id === parentId)[0];
@@ -120,12 +145,7 @@ const Board = () => {
   return (
     <>
       <DndProvider backend={dndBackend}>
-
-        <Section>
-          {sections.map(section =>
-            <Column>{section}</Column>
-          )}
-        </Section>
+        <HeadLine sections={sections} />
         {tasks.sort(compare).map(task =>
           <StorySection task={task} sections={sections} moveTask={moveTask} openDialog={setTaskId} />
         )}

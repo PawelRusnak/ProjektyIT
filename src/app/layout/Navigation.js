@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AppBar from '@material-ui/core/AppBar';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -12,12 +11,9 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import MenuIcon from '@material-ui/icons/Menu';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
-import { styled } from '@material-ui/core/styles';
+import NavBar from './NavBar'
 
 const drawerWidth = 255;
 
@@ -93,13 +89,6 @@ const styles = theme => ({
   }
 });
 
-const ToolbarStyled = styled(Toolbar)({
-  justifyContent: 'space-between',
-});
-const ToolbarLeft = styled('div')({
-  display: 'flex',
-  alignItems: 'center',
-});
 
 export class Navigation extends React.Component {
   state = {
@@ -134,30 +123,7 @@ export class Navigation extends React.Component {
     return (
       <div className={classes.root}>
         <CssBaseline />
-        <AppBar
-          position='fixed'
-          className={classNames(classes.appBar, {
-            [classes.appBarShift]: this.state.open || this.state.hover,
-          })}
-        >
-          <ToolbarStyled>
-            <ToolbarLeft>
-              <IconButton
-                color='inherit'
-                aria-label='Open drawer'
-                onClick={this.handleDrawerOpen}
-                className={classNames(classes.menuButton, {
-                  [classes.hide]: this.state.open || this.state.hover,
-                })}
-              >
-                <MenuIcon />
-              </IconButton>
-              <Typography variant='h6' color='inherit'>
-                Project A
-              </Typography>
-            </ToolbarLeft>
-          </ToolbarStyled>
-        </AppBar>
+        <NavBar open={this.state.open} hover={this.state.hover} handleDraweOpen={this.handleDrawerOpen} withSideBar={true} />
         <div
           onMouseEnter={this.handleDrawerOpenTemp}
           onMouseLeave={this.handleDrawerCloseTemp}

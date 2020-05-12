@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import * as Routes from './Routes';
 import Board from '../app/pages/board';
 import Backlog from '../app/pages/backlog';
@@ -18,6 +18,8 @@ const ContentRouter = () => {
           path={Routes.Backlog.getFullPath()}
           exact
           component={Backlog} />
+
+        <Redirect path={Routes.Project.getFullPath()} exact to={Routes.Board.getFullPath()} />
       </Switch>
     </Layout>
   );
