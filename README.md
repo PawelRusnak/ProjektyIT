@@ -1,3 +1,6 @@
+Projekt stworzony na potrzeby pracy licencjackiej "Wykorzystanie systemu informatycznego do zarządzania czasem pracy w przedsiębiorstwie IT"
+Autor: Paweł Rusnak
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
