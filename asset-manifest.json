@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/ProjektyIT/static/css/main.8a0c3ef3.chunk.css",
+    "main.js": "/ProjektyIT/static/js/main.ccaa26ee.chunk.js",
+    "main.js.map": "/ProjektyIT/static/js/main.ccaa26ee.chunk.js.map",
+    "runtime-main.js": "/ProjektyIT/static/js/runtime-main.8ccb27f9.js",
+    "runtime-main.js.map": "/ProjektyIT/static/js/runtime-main.8ccb27f9.js.map",
+    "static/js/2.df76ae41.chunk.js": "/ProjektyIT/static/js/2.df76ae41.chunk.js",
+    "static/js/2.df76ae41.chunk.js.map": "/ProjektyIT/static/js/2.df76ae41.chunk.js.map",
+    "index.html": "/ProjektyIT/index.html",
+    "precache-manifest.2bb00ed3a68910464c8deaef7ec554a0.js": "/ProjektyIT/precache-manifest.2bb00ed3a68910464c8deaef7ec554a0.js",
+    "service-worker.js": "/ProjektyIT/service-worker.js",
+    "static/css/main.8a0c3ef3.chunk.css.map": "/ProjektyIT/static/css/main.8a0c3ef3.chunk.css.map",
+    "static/js/2.df76ae41.chunk.js.LICENSE.txt": "/ProjektyIT/static/js/2.df76ae41.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8ccb27f9.js",
+    "static/js/2.df76ae41.chunk.js",
+    "static/css/main.8a0c3ef3.chunk.css",
+    "static/js/main.ccaa26ee.chunk.js"
+  ]
+}

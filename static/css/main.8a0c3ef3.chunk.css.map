@@ -1,0 +1,1 @@
+{"version":3,"sources":["global.scss"],"names":[],"mappings":"AACA,KACE,oBAAqB,CACrB,qBAAyB,CAC1B,EAGC,SAAU,CACV,cAAe","file":"main.8a0c3ef3.chunk.css","sourcesContent":["\r\nbody {\r\n  font-family: 'Roboto';\r\n  background-color: #ffffff;\r\n}\r\n\r\na {\r\n  all: unset;\r\n  cursor: pointer;\r\n}"]}
