@@ -4,20 +4,26 @@ import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight'
 import KeyboardArrowDown from '@material-ui/icons/KeyboardArrowDown'
 
 const Container = styled('div')({
-  top: 180,
+  top: 239,
   position: 'sticky',
   backgroundColor: '#ffffff',
   display: 'flex',
   alignItems: 'center',
 })
 
-const Header = ({ task, handleArrowClick, hidden }) => {
+const Status = styled('span')({
+  border: '1px solid gray',
+  paddingLeft: 3,
+  paddingRight: 3
+});
+
+const Header = ({ task, handleArrowClick, hidden, sections }) => {
 
   return (
     <Container>
-      {hidden ? <KeyboardArrowRight onClick={() => handleArrowClick(task.id)} /> : <KeyboardArrowDown onClick={() => handleArrowClick(task.id)} />}
+      {hidden ? <KeyboardArrowRight onClick={() => handleArrowClick()} /> : <KeyboardArrowDown onClick={() => handleArrowClick(task.id)} />}
 
-      <span>{task.type} {task.id} {task.status} {task.name} {task.subtasks.lenght}</span>
+      <span>{task.id} <Status>{task.status}</Status> {task.name} {task.subtasks.lenght}</span>
     </Container>
   )
 

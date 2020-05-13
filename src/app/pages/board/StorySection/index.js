@@ -14,20 +14,20 @@ const Section = styled('div')({
 const StorySection = ({ task, sections, moveTask, openDialog }) => {
   const [hidden, setHidden] = useState(false);
 
-  const handleArrowClick = (taskId) => {
+  const handleArrowClick = () => {
     setHidden(!hidden);
   }
 
   return (
     <>
-      <Header task={task} hidden={hidden} handleArrowClick={handleArrowClick} />
+      <Header task={task} sections={sections} hidden={hidden} handleArrowClick={handleArrowClick} />
       <Section
         style={hidden ? { minHeight: 0 } : {}}
       >
         {!hidden && sections.map(section =>
           <Column taskId={task.id} moveTask={moveTask} section={section}>
             {task.subtasks.map(subtask =>
-              subtask.status === section && <TaskTile parentId={task.id} task={subtask} openDialog={openDialog} />
+              subtask.status === section.order && <TaskTile parentId={task.id} task={subtask} openDialog={openDialog} />
             )}
           </Column>
         )}

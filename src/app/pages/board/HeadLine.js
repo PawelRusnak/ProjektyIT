@@ -1,5 +1,7 @@
 import React from 'react';
 import { styled } from '@material-ui/core/styles';
+import { Button, TextField, Select, MenuItem, InputAdornment, FormControl, InputLabel } from '@material-ui/core';
+import Search from '@material-ui/icons/Search';
 
 const Header = styled('div')({
   position: 'sticky',
@@ -25,14 +27,66 @@ const Column = styled('div')({
   borderRadius: '10px 10px 0 0',
 });
 
-const HeadLine = ({ sections }) => {
+const TitleRow = styled('div')({
+  display: 'flex',
+  justifyContent: 'space-between',
+  paddingLeft: 15,
+  paddingRight: 25,
+});
+
+const Title = styled('div')({
+  fontSize: 25,
+});
+
+const Info = styled('div')({
+  display: 'flex',
+  alignItems: 'center',
+});
+
+const Filters = styled('div')({
+  paddingLeft: 15,
+  paddingBottom: 15,
+  display: 'flex'
+});
+
+const HeadLine = ({ sections, title, filters, setFilters, endSprint }) => {
   return (
     <Header>
-      <div>Sprint 2103123 ----- pozostało X dni</div>
-      <div>Jakiś filter tutaj</div>
+      <TitleRow>
+        <Title>{title}</Title>
+        {endSprint && <Info>
+          <div>Pozostało 7 dni</div>
+          <Button>Zakończ sprint</Button>
+        </Info>}
+      </TitleRow>
+      <Filters>
+        <TextField
+          label='Filtruj'
+          value={filters}
+          onChange={setFilters}
+          InputProps={{
+            endAdornment: <InputAdornment position="end"><Search /></InputAdornment>,
+          }}
+        />
+        <FormControl style={{
+          minWidth: 170,
+          marginLeft: 10,
+        }}>
+          <InputLabel>
+            Przypisana osoba
+          </InputLabel>
+          <Select value={filters} onChange={setFilters}>
+            <MenuItem value="">
+              <em>Brak</em>
+            </MenuItem>
+            <MenuItem value={"Paweł Rusnak"}>Paweł Rusnak</MenuItem>
+            <MenuItem value={"Jan Kowalski"}>Jan Kowalski</MenuItem>
+          </Select>
+        </FormControl>
+      </Filters>
       {sections && <Section>
         {sections.map(section =>
-          <Column>{section}</Column>
+          <Column>{section.label}</Column>
         )}
       </Section>}
     </Header>

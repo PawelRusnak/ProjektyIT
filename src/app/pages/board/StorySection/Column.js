@@ -16,7 +16,7 @@ const Column = ({ taskId, children, moveTask, section }) => {
   const [{ isOver, canDrop }, drop] = useDrop({
     accept: 'task',
     canDrop: item => item.parentId === taskId,
-    drop: item => moveTask(taskId, item.taskId, section),
+    drop: item => moveTask(taskId, item.taskId, section.order),
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
       canDrop: !!monitor.canDrop(),

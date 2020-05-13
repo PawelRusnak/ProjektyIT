@@ -112,8 +112,8 @@ const NavBar = ({ open, hover, handleDrawerOpen, withSideBar, classes }) => {
           >
             <MenuIcon />
           </IconButton>}
-          <Typography variant='h6' color='inherit'>
-            {withSideBar ? 'projectname' : 'Dashboard'}
+          <Typography style={{ textTransform: 'capitalize' }} variant='h6' color='inherit'>
+            {withSideBar ? window.location.pathname.split('/')[1].replace('-', ' ') : 'Dashboard'}
           </Typography>
         </ToolbarLeft>
       </ToolbarStyled>

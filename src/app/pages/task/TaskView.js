@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { styled } from '@material-ui/core/styles';
 import EditableField from './EditableField';
+import { TextField, Button } from '@material-ui/core';
 
 const Content = styled('div')({
   width: '60vw',
@@ -76,9 +77,6 @@ const TaskView = () => {
     <Content>
       <HeadLine>
         task id / parent id
-        <Buttons>
-          X
-        </Buttons>
       </HeadLine>
       <Main>
         <Details>
@@ -125,6 +123,14 @@ const TaskView = () => {
           <SubSection>
             <SubHeader>Osoba zgłaszająca</SubHeader>
             Jan
+          </SubSection>
+          <SubSection>
+            <SubHeader>Zarejestruj godziny</SubHeader>
+            <div>
+              <TextField variant='outlined' type='number' label={"Spędzony czas"} />
+              <Button style={{ marginTop: 15 }}>Dodaj</Button>
+              <Button style={{ marginTop: 15 }}>Szczegóły</Button>
+            </div>
           </SubSection>
         </Info>
       </Main>
