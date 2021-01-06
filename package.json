@@ -14,7 +14,7 @@
     "@vx/group": "0.0.196",
     "@vx/hierarchy": "0.0.196",
     "@vx/shape": "0.0.196",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "axios-mock-adapter": "^1.18.1",
     "classnames": "^2.2.6",
     "d3-hierarchy": "^1.1.9",
